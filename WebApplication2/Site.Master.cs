@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+// prueba
 namespace WebApplication2
 {
     public partial class SiteMaster : MasterPage
