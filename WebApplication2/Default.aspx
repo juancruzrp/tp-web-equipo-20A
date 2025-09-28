@@ -1,10 +1,10 @@
-﻿<%@ Page Title="Inicio" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebApplication2._Default" %>
+﻿<%@ Page Title="JI&G Store" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebApplication2._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <main>
         <section class="row" aria-labelledby="aspnetTitle">
-            <h1 id="aspnetTitle">NOMBRE</h1>
+            <h1 id="aspnetTitle">Bienvidos!</h1>
             <p class="lead">En nuestra tienda vas a encontrar una amplia variedad de monitores, periféricos, gabinetes y mucho mas para que armes o mejores tu PC según tus necesidades.</p>
         </section>
       

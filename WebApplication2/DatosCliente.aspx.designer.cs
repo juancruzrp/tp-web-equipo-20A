@@ -11,7 +11,7 @@ namespace WebApplication2
 {
 
 
-    public partial class DatosCliente
+    public partial class About
     {
 
         /// <summary>
