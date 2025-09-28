@@ -9,7 +9,7 @@
             <asp:Label ID="lblCodigo" cssclass="form-label" runat="server" Text="Ingresa el código de tu voucher."></asp:Label>
             <asp:TextBox  ID="txtCodigo" cssclass="form-control" runat="server"></asp:TextBox>
           </div>              
-        <asp:Button ID="btnSiguiente" CssClass="btn btn-primary" runat="server" Text="Siguiente" />
+        <asp:Button ID="btnSiguiente" CssClass="btn btn-primary" OnClick="btnSiguiente_Click" runat="server" Text="Siguiente" />
         </form>        
     </main>
 </asp:Content>

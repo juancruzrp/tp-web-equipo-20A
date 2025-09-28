@@ -7,16 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace WebApplication2
 {
-    public partial class About : Page
+    public partial class DatosCliente : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
-
-        protected void btnSiguiente_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Seleccion.aspx?", false);
         }
     }
 }
