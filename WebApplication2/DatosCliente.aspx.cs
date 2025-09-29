@@ -26,7 +26,7 @@ namespace WebApplication2
         }
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Promocion.aspx?", false);
+            Response.Redirect("Seleccion.aspx?", false);
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)

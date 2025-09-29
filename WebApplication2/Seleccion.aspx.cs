@@ -18,11 +18,11 @@ namespace WebApplication2
             ListaArticulo = negocio.listarConSP();
         }
 
-        protected void btnSeleccionar1_Click(object sender, EventArgs e)
+        protected void btnSeleccionar_Click(object sender, EventArgs e)
         {
             Response.Redirect("DatosCliente.aspx?", false);
         }
-
+        /*
         protected void btnSeleccionar2_Click(object sender, EventArgs e)
         {
             Response.Redirect("DatosCliente.aspx?", false);
@@ -31,6 +31,6 @@ namespace WebApplication2
         protected void btnSeleccionar3_Click(object sender, EventArgs e)
         {
             Response.Redirect("DatosCliente.aspx?", false);
-        }
+        }*/
     }
 }
