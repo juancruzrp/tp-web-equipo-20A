@@ -4,7 +4,7 @@
     <h2>¡Selecciona el premio por el cual queres participar!</h2>   
     <br />
 
-            <%foreach (Dominio.Articulo articulo in ListaArticulo)
+           <%-- <%foreach (Dominio.Articulo articulo in ListaArticulo)
               {
             %>
               <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -21,6 +21,6 @@
                   </div>
 
               </div>
-           <% } %>
+           <% } %>--%>
 
 </asp:Content>

@@ -3,13 +3,13 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Negocio;
+//using Negocio;
 
 namespace WebApplication2
 {
     public partial class Promocion : System.Web.UI.Page
     {
-        protected void btnSiguiente_Click(object sender, EventArgs e)
+       protected void btnSiguiente_Click(object sender, EventArgs e)
         {
             // Creamos una instancia de AccesoDatos
             //AccesoDatos datos = new AccesoDatos();
@@ -50,7 +50,9 @@ namespace WebApplication2
                 // Opcional: registrar el error
                 // Console.WriteLine(ex.ToString());
             }
+        
+            Response.Redirect("Seleccion.aspx?", false);
         }
     }
-
+       
 }

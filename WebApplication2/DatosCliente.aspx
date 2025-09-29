@@ -1,11 +1,11 @@
-﻿<%@ Page Title="Log in" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DatosCliente.aspx.cs" Inherits="WebApplication2.About" %>
+﻿<%@ Page Title="Log in" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DatosCliente.aspx.cs" Inherits="WebApplication2.DatosCliente" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2>Ingresa tus datos</h2>
+
     <asp:Label ID="lblDNI" runat="server" Text="DNI"></asp:Label>
     <asp:TextBox CssClass="form-control" ID="txtDNI" runat="server"></asp:TextBox>
-
 
     <div class="row g-3">
         <div class="col">
@@ -23,23 +23,32 @@
     </div>
     <div class="row g-3">
         <div class="col">
-            <asp:Label ID="lblDireccion" runat="server" Text="Direccion"></asp:Label>
-            <asp:TextBox ID="txtDireccion" CssClass="form-control" runat="server"></asp:TextBox>
+            <div class="dropdown">
+                <asp:Label ID="lblPartido" runat="server" Text="Partido:"></asp:Label>
+                <br />
+                <asp:DropDownList ID="ddlCiudad" CssClass="btn btn-secondary dropdown-toggle" runat="server"></asp:DropDownList>
+            </div>
         </div>
         <div class="col">
-            <asp:Label ID="lblCiudad" runat="server" Text="Ciudad"></asp:Label>
-            <asp:TextBox ID="txtCiudad" CssClass="form-control" runat="server"></asp:TextBox>
+            <asp:Label ID="lblDireccion" runat="server" Text="Direccion"></asp:Label>
+            <asp:TextBox ID="txtDireccion" CssClass="form-control" runat="server"></asp:TextBox>
         </div>
         <div class="col">
             <asp:Label ID="lblCodigoPostal" runat="server" Text="Codigo Postal"></asp:Label>
             <asp:TextBox ID="txtCodigoPostal" CssClass="form-control" runat="server"></asp:TextBox>
         </div>
     </div>
-    <asp:CheckBox ID="chkTerminos" runat="server" />
-    <asp:Label ID="lblTerminos" runat="server" Text="Acepto los terminos y condiciones."></asp:Label>
-    <div class="col">
-        <asp:Button ID="btnAceptar" CssClass="btn btn-primary" runat="server" Text="Aceptar" />
-        <asp:Button ID="btnCancelar" CssClass="btn btn-primary" runat="server" Text="Cancelar" />
+    <br />
+    <div>
+        <asp:CheckBox ID="chkTerminos" runat="server" />
+        <asp:Label ID="lblTerminos" runat="server" Text="Acepto los terminos y condiciones."></asp:Label>
+    </div>
+    <br />
+    <div class="row g-2">
+        <div>
+            <asp:Button ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" Text="Aceptar" />
+            <asp:Button ID="btnCancelar" CssClass="btn btn-primary" OnClick="btnCancelar_Click" runat="server" Text="Cancelar" />
+        </div>
     </div>
 
 
