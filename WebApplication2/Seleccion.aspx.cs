@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-//using Negocio;
-//using Dominio;
+using Negocio;
+using Dominio;
 
 namespace WebApplication2
 {

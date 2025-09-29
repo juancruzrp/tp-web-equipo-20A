@@ -257,6 +257,16 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Repositorio\programacion\Dominio\Dominio.csproj">
+      <Project>{1d06d5c3-1106-4ad0-b4ee-eec11fc7cb6f}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Repositorio\programacion\Negocio\Negocio.csproj">
+      <Project>{b1a7c884-9e06-4064-a009-715838223c4c}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
