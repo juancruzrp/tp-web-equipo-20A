@@ -255,17 +255,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AccesoDatos\negocio.csproj">
-      <Project>{5f064714-554a-46a1-8a1d-155c5ec9db1c}</Project>
-      <Name>negocio</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\dominio\dominio.csproj">
-      <Project>{1f9522a3-67c2-4913-be63-48b7c7f2eb56}</Project>
-      <Name>dominio</Name>
-    </ProjectReference>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <ProjectReference Include="..\..\..\Repositorio\programacion\Dominio\Dominio.csproj">
+      <Project>{1d06d5c3-1106-4ad0-b4ee-eec11fc7cb6f}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Repositorio\programacion\Negocio\Negocio.csproj">
+      <Project>{b1a7c884-9e06-4064-a009-715838223c4c}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

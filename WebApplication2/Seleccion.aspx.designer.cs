@@ -15,30 +15,12 @@ namespace WebApplication2
     {
 
         /// <summary>
-        /// Control btnSeleccionar1.
+        /// Control btnSeleccionar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSeleccionar1;
-
-        /// <summary>
-        /// Control btnSeleccionar2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSeleccionar2;
-
-        /// <summary>
-        /// Control btnSeleccionar3.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSeleccionar3;
+        protected global::System.Web.UI.WebControls.Button btnSeleccionar;
     }
 }

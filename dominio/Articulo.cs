@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Deployment.Internal;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Dominio
@@ -22,7 +21,7 @@ namespace Dominio
         public Categoria Categoria { get; set; }
 
         public double Precio { get; set; }
-
+        
         public string ImagenUrl { get; set; }
 
     }

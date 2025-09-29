@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-using dominio;
+using Dominio;
 using System.Globalization;
 using System.Net;
-using Dominio;
 
 
 namespace Negocio
@@ -155,7 +154,7 @@ namespace Negocio
             }
 
         }
-
+               
         public void modificarImagen(int id, string nuevaUrl)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -166,7 +165,7 @@ namespace Negocio
                 datos.setearParametro("@ImagenUrl", nuevaUrl);
                 datos.setearParametro("@Id", id);
                 datos.ejecutarAccion();
-
+                 
             }
             catch (Exception ex)
             {
@@ -178,10 +177,10 @@ namespace Negocio
             }
 
         }
-
+    
         public void eliminar(int id)
         {
-            AccesoDatos datos = new AccesoDatos();
+                AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.setearConsulta("delete from ARTICULOS where id = @Id");
@@ -201,7 +200,7 @@ namespace Negocio
 
         public void eliminarImagen(int id)
         {
-            AccesoDatos datos = new AccesoDatos();
+                AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.setearConsulta("delete from IMAGENES where idarticulo = @Id");
@@ -244,7 +243,7 @@ namespace Negocio
                             break;
 
                     }
-
+                   
                 }
                 else if (campo == "Nombre")
                 {
@@ -350,60 +349,5 @@ namespace Negocio
                 throw ex;
             }
         }
-
-        public List<Articulo> listarConSP()
-        {
-            {
-                List<Articulo> lista = new List<Articulo>();
-                AccesoDatos datos = new AccesoDatos();
-                try
-                {
-                    string consulta = "select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion as Marca, C.Descripcion as Categoria, Precio, ImagenUrl, M.Id as IdMarca, C.Id as IdCategoria from ARTICULOS A, IMAGENES I, MARCAS M, CATEGORIAS C where A.Id = I.IdArticulo and A.IdMarca = M.Id and A.IdCategoria = C.Id";
-                    
-                    datos.setearConsulta(consulta);
-                    datos.ejecutarLectura();
-                    while (datos.Lector.Read())
-                    {
-                        Articulo aux = new Articulo();
-                        aux.Id = (int)datos.Lector["Id"];
-
-                        if (!(datos.Lector["Codigo"] is DBNull))
-                            aux.Codigo = (string)datos.Lector["Codigo"];
-
-                        if (!(datos.Lector["Nombre"] is DBNull))
-                            aux.Nombre = (string)datos.Lector["Nombre"];
-
-                        if (!(datos.Lector["Descripcion"] is DBNull))
-                            aux.Descripcion = (string)datos.Lector["Descripcion"];
-
-                        aux.Marca = new Marca();
-                        if (!(datos.Lector["Marca"] is DBNull))
-                            aux.Marca.Descripcion = (string)datos.Lector["Marca"];
-
-                        aux.Marca.Id = (int)datos.Lector["IdMarca"];
-
-                        aux.Categoria = new Categoria();
-                        if (!(datos.Lector["Categoria"] is DBNull))
-                            aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
-
-                        aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
-
-                        if (!(datos.Lector["Precio"] is DBNull))
-                            aux.Precio = Convert.ToDouble(datos.Lector["Precio"]);
-
-                        aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
-
-                        lista.Add(aux);
-                    }
-                    return lista;
-                }
-                catch (Exception ex)
-                {
-
-                    throw ex;
-                }
-            }
-        }
-
     }
 }
