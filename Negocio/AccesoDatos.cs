@@ -22,7 +22,7 @@ namespace Negocio
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true");
+            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=PROMOS_DB; integrated security=true");
             /// crear otra conexion
             ///conexion = new SqlConnection("");
             comando = new SqlCommand();
@@ -102,6 +102,34 @@ namespace Negocio
             comando.Parameters.Clear();
         }
 
+        public DataTable EjecutarConsulta(string query, params SqlParameter[] parametros)
+        {
+            comando.Connection = conexion;
+            comando.CommandText = query;
+            comando.Parameters.Clear();
+            comando.Parameters.AddRange(parametros);
+
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+
+            try
+            {
+                conexion.Open();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                // Cierra la conexión y libera recursos en el bloque finally
+                if (conexion.State == ConnectionState.Open)
+                    conexion.Close();
+                da.Dispose();
+            }
+        }
 
     }
 }
