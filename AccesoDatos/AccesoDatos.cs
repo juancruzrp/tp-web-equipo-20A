@@ -102,6 +102,38 @@ namespace Negocio
             comando.Parameters.Clear();
         }
 
+        // Nuevo método para ejecutar consultas y devolver un DataTable
+        public DataTable EjecutarConsulta(string query, params SqlParameter[] parametros)
+        {
+            comando.Connection = conexion;
+            comando.CommandText = query;
+            comando.Parameters.Clear();
+            comando.Parameters.AddRange(parametros);
+
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+
+            try
+            {
+                conexion.Open();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                // Cierra la conexión y libera recursos en el bloque finally
+                if (conexion.State == ConnectionState.Open)
+                    conexion.Close();
+                da.Dispose();
+            }
+        }
+
+
+
 
     }
 }

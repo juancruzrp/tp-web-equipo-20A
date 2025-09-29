@@ -11,7 +11,7 @@ namespace WebApplication2
 {
 
 
-    public partial class About
+    public partial class Promocion
     {
 
         /// <summary>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Promo Ganá" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Promocion.aspx.cs" Inherits="WebApplication2.About" %>
+﻿<%@ Page Title="Promo Ganá" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Promocion.aspx.cs" Inherits="WebApplication2.Promocion" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main aria-labelledby="title">
