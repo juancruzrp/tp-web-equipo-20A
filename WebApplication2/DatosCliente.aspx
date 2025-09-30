@@ -3,10 +3,10 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2>Ingresa tus datos</h2>
-
-    <asp:Label ID="lblDNI" runat="server" Text="DNI"></asp:Label>
-    <asp:TextBox CssClass="form-control" ID="txtDNI" runat="server"></asp:TextBox>
-
+    <div>
+    <asp:Label ID="lblDocumento" runat="server" Text="Documento"></asp:Label>
+    <asp:TextBox CssClass="form-control" ID="txtDocumento" runat="server"></asp:TextBox>
+    </div>
     <div class="row g-3">
         <div class="col">
             <asp:Label ID="lblNombre" runat="server" Text="Nombre/s"></asp:Label>

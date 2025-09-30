@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
+
 namespace Negocio
 {
     public class ClienteNegocio
@@ -17,11 +18,11 @@ namespace Negocio
             try
             {
                 datos.setearConsulta(
-                "Insert into Clientes(Documento, Nombre, Apellido, Email, Direccion, Ciudad, CP) " +
-                "values(@DNI, @Nombre, @Apellido, @Email, @Direccion, @Partido, @CodigoPostal); "+
+                "Insert into Clientes" +
+                "values(@Documento, @Nombre, @Apellido, @Email, @Direccion, @Ciudad, @CodigoPostal); "+
                 "SELECT CAST(SCOPE_IDENTITY() AS INT);");
 
-                datos.setearParametro("@DNI",nuevo.DNI); 
+                datos.setearParametro("@Documento",nuevo.Documento); 
                 datos.setearParametro("@Nombre", nuevo.Nombre);
                 datos.setearParametro("@Apellido", nuevo.Apellido);
                 datos.setearParametro("@Email", nuevo.Email);
@@ -41,6 +42,32 @@ namespace Negocio
             }
         }
 
+        public void agregarConSP(Cliente nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearProcedimiento("storedAltaCliente");
+                datos.setearParametro("@Documento", nuevo.Documento);
+                datos.setearParametro("@Nombre", nuevo.Nombre);
+                datos.setearParametro("@Apellido", nuevo.Apellido);
+                datos.setearParametro("@Email", nuevo.Email);
+                datos.setearParametro("@Direccion", nuevo.Direccion);
+                datos.setearParametro("@Ciudad", nuevo.Partido);
+                datos.setearParametro("@CodigoPostal", nuevo.CodigoPostal);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
     }
 }

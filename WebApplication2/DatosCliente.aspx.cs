@@ -33,33 +33,27 @@ namespace WebApplication2
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (!chkTerminos.Checked)
-            {
-                // Validación simple
-                Response.Write("<script>alert('Debes aceptar los términos y condiciones.');</script>");
-                return;
-            }
-            ClienteNegocio negocio = new ClienteNegocio();
-
-
+            
             try
             {
                 
                 Cliente cliente = new Cliente();
+                ClienteNegocio negocio = new ClienteNegocio();
                 
-                cliente.DNI = int.Parse(txtDNI.Text);
+                cliente.Documento = txtDocumento.Text;
                 cliente.Nombre = txtNombre.Text;
                 cliente.Apellido = txtApellido.Text;
                 cliente.Email = txtEmail.Text;
                 cliente.Direccion = txtDireccion.Text;
-                cliente.Partido = ddlPartido.SelectedIndex.ToString();
+                cliente.Partido = ddlPartido.SelectedValue.ToString();
                 cliente.CodigoPostal = int.Parse(txtCodigoPostal.Text);
 
-                
+                negocio.agregarConSP(cliente);
+                Response.Redirect("Promocion.aspx", false);
             }
             catch (Exception ex)
             {
-
+                Session.Add("error", ex);
                 throw;
             }
 

@@ -130,6 +130,11 @@ namespace Negocio
                 da.Dispose();
             }
         }
+        public void setearProcedimiento(string nombreProcedimiento)
+        {
+            comando = new SqlCommand(nombreProcedimiento, conexion);
+            comando.CommandType = CommandType.StoredProcedure;
+        }
 
     }
 }
