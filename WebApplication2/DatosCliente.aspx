@@ -11,6 +11,12 @@
 <div>
     <asp:Label ID="lblDocumento" runat="server" Text="Documento"></asp:Label>
     <asp:TextBox CssClass="form-control" ID="txtDocumento" runat="server"></asp:TextBox>
+     <asp:RequiredFieldValidator ID="rfvDocumento" runat="server" 
+        ControlToValidate="txtDocumento"
+        ErrorMessage="Debe ingresar un documento." 
+        ForeColor="Red" 
+        Display="Dynamic">
+    </asp:RequiredFieldValidator>
     <asp:Button ID="btnBuscarDNI" CssClass="btn btn-secondary" 
                 OnClick="btnBuscarDNI_Click" runat="server" Text="Buscar" />
     <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" Visible="false"></asp:Label>
