@@ -52,7 +52,7 @@ namespace WebApplication2
                     cliente.Partido = ddlPartido.SelectedValue.ToString();
                     cliente.CodigoPostal = int.Parse(txtCodigoPostal.Text);
 
-                    negocio.agregarConSP(cliente);
+                    negocio.agregar(cliente);
                 }
 
                 Response.Redirect("Promocion.aspx", false);
@@ -62,31 +62,6 @@ namespace WebApplication2
                 Session.Add("error", ex);
                 throw;
             }
-
-            /* try
-             {
-
-                 Cliente cliente = new Cliente();
-                 ClienteNegocio negocio = new ClienteNegocio();
-
-                 cliente.Documento = txtDocumento.Text;
-                 cliente.Nombre = txtNombre.Text;
-                 cliente.Apellido = txtApellido.Text;
-                 cliente.Email = txtEmail.Text;
-                 cliente.Direccion = txtDireccion.Text;
-                 cliente.Partido = ddlPartido.SelectedValue.ToString();
-                 cliente.CodigoPostal = int.Parse(txtCodigoPostal.Text);
-
-                 negocio.agregarConSP(cliente);
-                 Response.Redirect("Promocion.aspx", false);
-             }
-             catch (Exception ex)
-             {
-                 Session.Add("error", ex);
-                 throw;
-             }
-             */
-
         }
 
         protected void btnBuscarDNI_Click(object sender, EventArgs e)

@@ -11,16 +11,14 @@ namespace Negocio
 {
     public class ClienteNegocio
     {
-        public int agregar(Cliente nuevo)
+        public void agregar(Cliente nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
                 datos.setearConsulta(
-                "Insert into Clientes" +
-                "values(@Documento, @Nombre, @Apellido, @Email, @Direccion, @Ciudad, @CodigoPostal); "+
-                "SELECT CAST(SCOPE_IDENTITY() AS INT);");
+                "Insert into Clientes values(@Documento, @Nombre, @Apellido, @Email, @Direccion, @Ciudad, @CodigoPostal)");
 
                 datos.setearParametro("@Documento",nuevo.Documento); 
                 datos.setearParametro("@Nombre", nuevo.Nombre);
@@ -30,7 +28,7 @@ namespace Negocio
                 datos.setearParametro("@Ciudad", nuevo.Partido);
                 datos.setearParametro("@CodigoPostal", nuevo.CodigoPostal);
 
-                return 0;
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {
@@ -42,7 +40,7 @@ namespace Negocio
             }
         }
 
-        public void agregarConSP(Cliente nuevo)
+       /* public void agregarConSP(Cliente nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
 
@@ -67,7 +65,7 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
-        }
+        }*/
 
 
         public Cliente buscarPorDocumento(string documento)
