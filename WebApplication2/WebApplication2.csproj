@@ -255,9 +255,9 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\dominio\dominio.csproj">
+    <ProjectReference Include="..\dominio\Dominio.csproj">
       <Project>{1d06d5c3-1106-4ad0-b4ee-eec11fc7cb6f}</Project>
-      <Name>dominio</Name>
+      <Name>Dominio</Name>
     </ProjectReference>
     <ProjectReference Include="..\Negocio\Negocio.csproj">
       <Project>{b1a7c884-9e06-4064-a009-715838223c4c}</Project>

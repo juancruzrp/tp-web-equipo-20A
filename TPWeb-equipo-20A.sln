@@ -5,7 +5,7 @@ VisualStudioVersion = 17.14.36511.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication2", "WebApplication2\WebApplication2.csproj", "{0E2D1092-B419-4F81-B58C-291A91E116CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dominio", "dominio\dominio.csproj", "{1D06D5C3-1106-4AD0-B4EE-EEC11FC7CB6F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "dominio\Dominio.csproj", "{1D06D5C3-1106-4AD0-B4EE-EEC11FC7CB6F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{B1A7C884-9E06-4064-A009-715838223C4C}"
 EndProject

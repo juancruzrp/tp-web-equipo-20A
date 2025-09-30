@@ -43,11 +43,11 @@
   <ItemGroup>
     <Compile Include="Articulo.cs" />
     <Compile Include="Categoria.cs" />
-<<<<<<< HEAD
+
     <Compile Include="Imagen.cs" />
-=======
+
     <Compile Include="Cliente.cs" />
->>>>>>> 4ff3854651e581c4a12a5b2371ab76f08525aeb4
+
     <Compile Include="Marca.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
