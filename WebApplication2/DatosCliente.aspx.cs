@@ -14,17 +14,26 @@ namespace WebApplication2
         protected void Page_Load(object sender, EventArgs e)
 
         {
-            ddlPartido.Items.Add("Vicente López");
-            ddlPartido.Items.Add("San Isidro");
-            ddlPartido.Items.Add("San Fernando");
-            ddlPartido.Items.Add("Tigre");
-            ddlPartido.Items.Add("Escobar");
-            ddlPartido.Items.Add("Pilar");
-            ddlPartido.Items.Add("Malvinas Argentinas");
-            ddlPartido.Items.Add("José C. Paz");
-            ddlPartido.Items.Add("San Miguel");
-            ddlPartido.Items.Add("General San Martín");
+            if (!IsPostBack)
+            {
+                ddlPartido.Items.Add(new ListItem("Seleccione un partido", ""));
+                ddlPartido.Items.Add("Vicente López");
+                ddlPartido.Items.Add("San Isidro");
+                ddlPartido.Items.Add("San Fernando");
+                ddlPartido.Items.Add("Tigre");
+                ddlPartido.Items.Add("Escobar");
+                ddlPartido.Items.Add("Pilar");
+                ddlPartido.Items.Add("Malvinas Argentinas");
+                ddlPartido.Items.Add("José C. Paz");
+                ddlPartido.Items.Add("San Miguel");
+                ddlPartido.Items.Add("General San Martín");
+            }
 
+        }
+
+        protected void cvTerminos_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = chkTerminos.Checked;
         }
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -33,6 +42,11 @@ namespace WebApplication2
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+
+            if (!Page.IsValid)
+            {
+                return; // Detiene la ejecución si hay errores de validación.
+            }
 
 
             try
@@ -80,7 +94,7 @@ namespace WebApplication2
 
             if (cliente != null)
             {
-                // Cliente encontrado → precargo datos
+                // Cliente encontrado precargo 
                 txtNombre.Text = cliente.Nombre;
                 txtApellido.Text = cliente.Apellido;
                 txtEmail.Text = cliente.Email;
@@ -94,7 +108,7 @@ namespace WebApplication2
             }
             else
             {
-                // Cliente NO encontrado → mensaje
+                // Cliente NO encontrado mensaje
                 txtNombre.Text = "";
                 txtApellido.Text = "";
                 txtEmail.Text = "";
