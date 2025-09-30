@@ -33,22 +33,28 @@ namespace WebApplication2
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            
+
+
             try
             {
-                
-                Cliente cliente = new Cliente();
                 ClienteNegocio negocio = new ClienteNegocio();
-                
-                cliente.Documento = txtDocumento.Text;
-                cliente.Nombre = txtNombre.Text;
-                cliente.Apellido = txtApellido.Text;
-                cliente.Email = txtEmail.Text;
-                cliente.Direccion = txtDireccion.Text;
-                cliente.Partido = ddlPartido.SelectedValue.ToString();
-                cliente.CodigoPostal = int.Parse(txtCodigoPostal.Text);
+                Cliente cliente = negocio.buscarPorDocumento(txtDocumento.Text);
 
-                negocio.agregarConSP(cliente);
+                if (cliente == null)
+                {
+                    // Crear nuevo
+                    cliente = new Cliente();
+                    cliente.Documento = txtDocumento.Text;
+                    cliente.Nombre = txtNombre.Text;
+                    cliente.Apellido = txtApellido.Text;
+                    cliente.Email = txtEmail.Text;
+                    cliente.Direccion = txtDireccion.Text;
+                    cliente.Partido = ddlPartido.SelectedValue.ToString();
+                    cliente.CodigoPostal = int.Parse(txtCodigoPostal.Text);
+
+                    negocio.agregarConSP(cliente);
+                }
+
                 Response.Redirect("Promocion.aspx", false);
             }
             catch (Exception ex)
@@ -57,9 +63,74 @@ namespace WebApplication2
                 throw;
             }
 
+            /* try
+             {
 
+                 Cliente cliente = new Cliente();
+                 ClienteNegocio negocio = new ClienteNegocio();
 
+                 cliente.Documento = txtDocumento.Text;
+                 cliente.Nombre = txtNombre.Text;
+                 cliente.Apellido = txtApellido.Text;
+                 cliente.Email = txtEmail.Text;
+                 cliente.Direccion = txtDireccion.Text;
+                 cliente.Partido = ddlPartido.SelectedValue.ToString();
+                 cliente.CodigoPostal = int.Parse(txtCodigoPostal.Text);
 
+                 negocio.agregarConSP(cliente);
+                 Response.Redirect("Promocion.aspx", false);
+             }
+             catch (Exception ex)
+             {
+                 Session.Add("error", ex);
+                 throw;
+             }
+             */
+
+        }
+
+        protected void btnBuscarDNI_Click(object sender, EventArgs e)
+        {
+            ClienteNegocio negocio = new ClienteNegocio();
+            string documento = txtDocumento.Text.Trim();
+
+            if (string.IsNullOrEmpty(documento))
+            {
+                lblMensaje.Text = "Por favor, ingrese un DNI.";
+                lblMensaje.Visible = true;
+                return;
+            }
+
+            Cliente cliente = negocio.buscarPorDocumento(documento);
+
+            if (cliente != null)
+            {
+                // Cliente encontrado → precargo datos
+                txtNombre.Text = cliente.Nombre;
+                txtApellido.Text = cliente.Apellido;
+                txtEmail.Text = cliente.Email;
+                txtDireccion.Text = cliente.Direccion;
+                //ddlPartido.SelectedValue = cliente.Partido;
+                txtCodigoPostal.Text = cliente.CodigoPostal.ToString();
+
+                lblMensaje.Text = "Cliente encontrado. Puedes actualizar tus datos si es necesario.";
+                lblMensaje.ForeColor = System.Drawing.Color.Green;
+                lblMensaje.Visible = true;
+            }
+            else
+            {
+                // Cliente NO encontrado → mensaje
+                txtNombre.Text = "";
+                txtApellido.Text = "";
+                txtEmail.Text = "";
+                txtDireccion.Text = "";
+                ddlPartido.ClearSelection();
+                txtCodigoPostal.Text = "";
+
+                lblMensaje.Text = "No estás registrado. Por favor completa tus datos.";
+                lblMensaje.ForeColor = System.Drawing.Color.Red;
+                lblMensaje.Visible = true;
+            }
         }
 
     }

@@ -3,10 +3,15 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2>Ingresa tus datos</h2>
-    <div>
+
+<div>
     <asp:Label ID="lblDocumento" runat="server" Text="Documento"></asp:Label>
     <asp:TextBox CssClass="form-control" ID="txtDocumento" runat="server"></asp:TextBox>
-    </div>
+    <asp:Button ID="btnBuscarDNI" CssClass="btn btn-secondary" 
+                OnClick="btnBuscarDNI_Click" runat="server" Text="Buscar" />
+    <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" Visible="false"></asp:Label>
+</div>
+
     <div class="row g-3">
         <div class="col">
             <asp:Label ID="lblNombre" runat="server" Text="Nombre/s"></asp:Label>
