@@ -22,7 +22,8 @@ namespace Dominio
 
         public double Precio { get; set; }
 
-        public string ImagenUrl { get; set; }
+        //public string ImagenUrl { get; set; }
+        public List<string> ImagenUrl { get; set; } = new List<string>();
 
     }
 }

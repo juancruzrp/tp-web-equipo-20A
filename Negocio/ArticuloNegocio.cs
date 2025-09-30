@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Dominio;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-using Dominio;
-using System.Globalization;
-using System.Net;
+using static System.Net.Mime.MediaTypeNames;
 
 
 namespace Negocio
@@ -73,11 +74,11 @@ namespace Negocio
 
         public List<Articulo> listarConSP()
         {
-            List<Articulo> lista = new List<Articulo>();
+            List<Articulo> lista= new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string consulta = "select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion as Marca, C.Descripcion as Categoria, Precio, ImagenUrl, M.Id as IdMarca, C.Id as IdCategoria from ARTICULOS A, IMAGENES I, MARCAS M, CATEGORIAS C where A.Id = I.IdArticulo and A.IdMarca = M.Id and A.IdCategoria = C.Id";
+                string consulta = "SELECT Id, Nombre, Descripcion FROM ARTICULOS";
                 
                 datos.setearConsulta(consulta);
                 datos.ejecutarLectura();
@@ -85,32 +86,12 @@ namespace Negocio
                 {
                     Articulo aux = new Articulo();
                     aux.Id = (int)datos.Lector["Id"];
-
-                    if (!(datos.Lector["Codigo"] is DBNull))
-                        aux.Codigo = (string)datos.Lector["Codigo"];
-
+                                       
                     if (!(datos.Lector["Nombre"] is DBNull))
                         aux.Nombre = (string)datos.Lector["Nombre"];
 
                     if (!(datos.Lector["Descripcion"] is DBNull))
                         aux.Descripcion = (string)datos.Lector["Descripcion"];
-
-                    aux.Marca = new Marca();
-                    if (!(datos.Lector["Marca"] is DBNull))
-                        aux.Marca.Descripcion = (string)datos.Lector["Marca"];
-
-                    aux.Marca.Id = (int)datos.Lector["IdMarca"];
-
-                    aux.Categoria = new Categoria();
-                    if (!(datos.Lector["Categoria"] is DBNull))
-                        aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
-
-                    aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
-
-                    if (!(datos.Lector["Precio"] is DBNull))
-                        aux.Precio = Convert.ToDouble(datos.Lector["Precio"]);
-
-                    aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
 
                     lista.Add(aux);
                 }
@@ -121,7 +102,44 @@ namespace Negocio
 
                 throw ex;
             }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
+
+        public List<Imagen> listarImagen()
+        {
+            List<Imagen> lista = new List<Imagen>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                string consulta = "SELECT IdArticulo, ImagenUrl FROM IMAGENES";
+                datos.setearConsulta(consulta);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Imagen img = new Imagen();
+                    img.IdArticulo = (int)datos.Lector["IdArticulo"];
+                    img.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+
+                    lista.Add(img);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
 
         public int agregar(Articulo nuevo)
         {

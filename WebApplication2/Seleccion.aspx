@@ -3,24 +3,37 @@
     
     <h2>¡Selecciona el premio por el cual queres participar!</h2>   
     <br />
+                
+            <div class="container">
+            <div class="row">
+                <% foreach (Dominio.Articulo articulo in ListaArticulo) 
+                   { 
+                %>
+                    <div class="col-4 mb-4"> 
+                        <div class="card" style="border:1px solid #ccc; padding:10px;">
+                        <div style="display:flex; gap:5px; justify-content:center; flex-wrap:wrap;">
+                                <% foreach (var url in articulo.ImagenUrl)
+                                   { 
+                                %>
+                                    <img src="<%= url %>" alt="Imagen <%= articulo.Nombre %>" 
+                                         style="width:150px; height:150px; object-fit:cover; border:1px solid #aaa;">
+                                <% 
+                                   } 
+                                %>
+                            </div>
 
-            <%foreach (Dominio.Articulo articulo in ListaArticulo)
-              {
-            %>
-              <div class="row row-cols-1 row-cols-md-3 g-4">
+                            <div style="margin-top:5px; text-align:center;">
+                                <h6><%= articulo.Nombre %></h6>
+                                <p style="font-size:0.8rem;"><%= articulo.Descripcion %></p>
+                                <asp:Button ID="Button1" CssClass="btn btn-sm btn-primary" runat="server" Text="Seleccionar" OnClick="btnSeleccionar_Click" />
+                            </div>
 
-                  <div class="col">
-                    <div class="card">
-                      <img src="<%:articulo.ImagenUrl %>" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title"><%: articulo.Nombre %></h5>
-                        <p class="card-text"><%:articulo.Descripcion %></p>
-                        <asp:Button ID="btnSeleccionar" cssclass="btn btn-primary" OnClick="btnSeleccionar_Click" runat="server" Text="Seleccionar" />
-                      </div>
+                        </div>
                     </div>
-                  </div>
+                <% } %>
+            </div>
+        </div>
 
-              </div>
-           <% } %>
-
-</asp:Content>
+    
+    
+   </asp:Content>
