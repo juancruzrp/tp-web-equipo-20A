@@ -22,15 +22,6 @@ namespace WebApplication2
         {
             Response.Redirect("DatosCliente.aspx?", false);
         }
-        /*
-        protected void btnSeleccionar2_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("DatosCliente.aspx?", false);
-        }
-
-        protected void btnSeleccionar3_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("DatosCliente.aspx?", false);
-        }*/
+        
     }
 }
