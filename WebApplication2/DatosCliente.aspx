@@ -9,16 +9,16 @@
 
     <div class="row g-3">
         <div class="col">
-            <asp:Label ID="lblNombre" runat="server" Text="Nombre"></asp:Label>
+            <asp:Label ID="lblNombre" runat="server" Text="Nombre/s"></asp:Label>
             <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server"></asp:TextBox>
         </div>
         <div class="col">
-            <asp:Label ID="lblApellido" runat="server" Text="Apellido"></asp:Label>
+            <asp:Label ID="lblApellido" runat="server" Text="Apellido/s"></asp:Label>
             <asp:TextBox ID="txtApellido" CssClass="form-control" runat="server"></asp:TextBox>
         </div>
         <div class="col">
-            <asp:Label ID="lblMail" runat="server" Text="Mail"></asp:Label>
-            <asp:TextBox ID="txtMail" CssClass="form-control" runat="server"></asp:TextBox>
+            <asp:Label ID="lblEmail" runat="server" Text="Mail"></asp:Label>
+            <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server"></asp:TextBox>
         </div>
     </div>
     <div class="row g-3">
@@ -26,7 +26,7 @@
             <div class="dropdown">
                 <asp:Label ID="lblPartido" runat="server" Text="Partido:"></asp:Label>
                 <br />
-                <asp:DropDownList ID="ddlCiudad" CssClass="btn btn-secondary dropdown-toggle" runat="server"></asp:DropDownList>
+                <asp:DropDownList ID="ddlPartido" CssClass="btn btn-secondary dropdown-toggle" runat="server"></asp:DropDownList>
             </div>
         </div>
         <div class="col">
