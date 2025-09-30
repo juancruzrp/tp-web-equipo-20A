@@ -69,22 +69,22 @@ namespace WebApplication2
         protected global::System.Web.UI.WebControls.TextBox txtApellido;
 
         /// <summary>
-        /// Control lblMail.
+        /// Control lblEmail.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMail;
+        protected global::System.Web.UI.WebControls.Label lblEmail;
 
         /// <summary>
-        /// Control txtMail.
+        /// Control txtEmail.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMail;
+        protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
         /// Control lblPartido.
@@ -96,13 +96,13 @@ namespace WebApplication2
         protected global::System.Web.UI.WebControls.Label lblPartido;
 
         /// <summary>
-        /// Control ddlCiudad.
+        /// Control ddlPartido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCiudad;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPartido;
 
         /// <summary>
         /// Control lblDireccion.
