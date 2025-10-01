@@ -4,30 +4,35 @@
 
     <h2>Ingresa tus datos</h2>
 
-     <asp:ValidationSummary ID="ValidationSummary1" runat="server" 
-        CssClass="alert alert-danger" 
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server"
+        CssClass="alert alert-danger"
         HeaderText="Por favor, completa los campos obligatorios:" />
 
-<div>
-    <asp:Label ID="lblDocumento" runat="server" Text="Documento"></asp:Label>
-    <asp:TextBox CssClass="form-control" ID="txtDocumento" runat="server"></asp:TextBox>
-     <asp:RequiredFieldValidator ID="rfvDocumento" runat="server" 
-        ControlToValidate="txtDocumento"
-        ErrorMessage="Debe ingresar un documento." 
-        ForeColor="Red" 
-        Display="Dynamic">
-    </asp:RequiredFieldValidator>
-    <asp:Button ID="btnBuscarDNI" CssClass="btn btn-secondary" 
-                OnClick="btnBuscarDNI_Click" runat="server" Text="Buscar" />
-    <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" Visible="false"></asp:Label>
-</div>
+    <div>
+        <asp:Label ID="lblDocumento" runat="server" Text="Documento"></asp:Label>
+        <asp:TextBox CssClass="form-control" ID="txtDocumento" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="rfvDocumento" runat="server"
+            ControlToValidate="txtDocumento"
+            ErrorMessage="Debe ingresar un documento."
+            ForeColor="Red"
+            Display="Dynamic">
+        </asp:RequiredFieldValidator>
+        <asp:Button ID="btnBuscarDNI" CssClass="btn btn-secondary"
+            OnClick="btnBuscarDNI_Click" runat="server" Text="Buscar" />
+        <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" Visible="false"></asp:Label>
+    </div>
 
     <div class="row g-3">
         <div class="col">
             <asp:Label ID="lblNombre" runat="server" Text="Nombre/s"></asp:Label>
             <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server"></asp:TextBox>
-             <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ControlToValidate="txtNombre"
+            <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ControlToValidate="txtNombre"
                 ErrorMessage="El nombre es obligatorio." ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="revNombre" runat="server"
+                ControlToValidate="txtNombre"
+                ErrorMessage="El nombre solo puede contener letras."
+                ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"
+                ForeColor="Red" Display="Dynamic" />
         </div>
 
         <div class="col">
@@ -35,13 +40,23 @@
             <asp:TextBox ID="txtApellido" CssClass="form-control" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator ID="rfvApellido" runat="server" ControlToValidate="txtApellido"
                 ErrorMessage="El apellido es obligatorio." ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="revApellido" runat="server"
+                ControlToValidate="txtApellido"
+                ErrorMessage="El apellido solo puede contener letras."
+                ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"
+                ForeColor="Red" Display="Dynamic" />
         </div>
 
         <div class="col">
             <asp:Label ID="lblEmail" runat="server" Text="Mail"></asp:Label>
             <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server"></asp:TextBox>
-             <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail"
+            <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail"
                 ErrorMessage="El mail es obligatorio." ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="revEmail" runat="server"
+                ControlToValidate="txtEmail"
+                ErrorMessage="Formato de email inválido.Permitidos =@gmail.com, @outlook.com, @hotmail.com."
+                ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$"
+                ForeColor="Red" Display="Dynamic" />
         </div>
 
     </div>
@@ -51,6 +66,8 @@
                 <asp:Label ID="lblPartido" runat="server" Text="Partido:"></asp:Label>
                 <br />
                 <asp:DropDownList ID="ddlPartido" CssClass="btn btn-secondary dropdown-toggle" runat="server"></asp:DropDownList>
+                <asp:RequiredFieldValidator ID="rfvPartido" runat="server" ControlToValidate="ddlPartido"
+                    ErrorMessage="Por favor,seleccione un partido." ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
             </div>
         </div>
 
@@ -63,7 +80,7 @@
         <div class="col">
             <asp:Label ID="lblCodigoPostal" runat="server" Text="Codigo Postal"></asp:Label>
             <asp:TextBox ID="txtCodigoPostal" CssClass="form-control" runat="server"></asp:TextBox>
-             <asp:RequiredFieldValidator ID="rfvCodigoPostal" runat="server" ControlToValidate="txtCodigoPostal"
+            <asp:RequiredFieldValidator ID="rfvCodigoPostal" runat="server" ControlToValidate="txtCodigoPostal"
                 ErrorMessage="El código postal es obligatorio." ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
         </div>
     </div>
@@ -71,13 +88,13 @@
 
     <br />
     <div>
-           <asp:CheckBox ID="chkTerminos" runat="server" />
-    <asp:Label ID="lblTerminos" runat="server" Text="Acepto los terminos y condiciones."></asp:Label>
-    <asp:CustomValidator ID="cvTerminos" runat="server" 
-        ErrorMessage="Debe aceptar los términos y condiciones." 
-        ForeColor="Red" 
-        Display="Dynamic"
-        OnServerValidate="cvTerminos_ServerValidate"></asp:CustomValidator>
+        <asp:CheckBox ID="chkTerminos" runat="server" />
+        <asp:Label ID="lblTerminos" runat="server" Text="Acepto los terminos y condiciones."></asp:Label>
+        <asp:CustomValidator ID="cvTerminos" runat="server"
+            ErrorMessage="Debe aceptar los términos y condiciones."
+            ForeColor="Red"
+            Display="Dynamic"
+            OnServerValidate="cvTerminos_ServerValidate"></asp:CustomValidator>
     </div>
     <br />
     <div class="row g-2">

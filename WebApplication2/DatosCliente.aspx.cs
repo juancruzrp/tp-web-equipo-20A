@@ -76,6 +76,9 @@ namespace WebApplication2
                 Session.Add("error", ex);
                 throw;
             }
+
+
+           
         }
 
         protected void btnBuscarDNI_Click(object sender, EventArgs e)
