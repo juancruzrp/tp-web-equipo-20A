@@ -38,9 +38,10 @@ namespace WebApplication2
             }
 
             ListaArticulo = articulos;
+                        
         }
 
-
+       
         protected void btnSeleccionar_Click(object sender, EventArgs e)
         {
             Response.Redirect("DatosCliente.aspx?", false);
