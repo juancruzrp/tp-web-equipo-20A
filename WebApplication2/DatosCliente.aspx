@@ -76,12 +76,22 @@
             <asp:TextBox ID="txtDireccion" CssClass="form-control" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator ID="rfvDireccion" runat="server" ControlToValidate="txtDireccion"
                 ErrorMessage="La dirección es obligatoria." ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="revDireccion" runat="server"
+                ControlToValidate="txtDireccion"
+                ErrorMessage="La dirección debe tener nombre de calle y altura."
+                ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+\s*\d+$"
+                ForeColor="Red" Display="Dynamic" />
         </div>
         <div class="col">
             <asp:Label ID="lblCodigoPostal" runat="server" Text="Codigo Postal"></asp:Label>
             <asp:TextBox ID="txtCodigoPostal" CssClass="form-control" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator ID="rfvCodigoPostal" runat="server" ControlToValidate="txtCodigoPostal"
                 ErrorMessage="El código postal es obligatorio." ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="revCodigoPostal" runat="server"
+                ControlToValidate="txtCodigoPostal"
+                ErrorMessage="El código postal debe contener solo números."
+                ValidationExpression="^\d+$"
+                ForeColor="Red" Display="Dynamic" />
         </div>
     </div>
 
