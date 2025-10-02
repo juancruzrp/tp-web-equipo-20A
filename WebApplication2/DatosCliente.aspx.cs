@@ -52,7 +52,7 @@ namespace WebApplication2
 
             if (!Page.IsValid)
             {
-                return; // Detiene la ejecución si hay errores de validación.
+                return; 
             }
 
 
@@ -89,6 +89,26 @@ namespace WebApplication2
 
                 }
 
+                
+                if (Session["IdArticuloSeleccionado"] != null && Session["CodigoVoucher"] != null)
+                {
+                    
+                    int idCliente = cliente.Id;
+                    string codigoVoucher = Session["CodigoVoucher"].ToString();
+                    int idArticulo = (int)Session["IdArticuloSeleccionado"];
+
+                    AccesoDatos datos = new AccesoDatos();
+                    datos.setearConsulta(@"UPDATE Vouchers 
+                    SET IdCliente = @IdCliente, FechaCanje = @FechaCanje, IdArticulo = @IdArticulo 
+                    WHERE CodigoVoucher = @CodigoVoucher");
+                    datos.setearParametro("@CodigoVoucher", codigoVoucher);
+                    datos.setearParametro("@IdCliente", idCliente);
+                    datos.setearParametro("@FechaCanje", DateTime.Now);
+                    datos.setearParametro("@IdArticulo", idArticulo);
+                    datos.ejecutarAccion();
+                    datos.cerrarConexion();
+                }
+
                 Response.Redirect("CargaExitosa.aspx", false);
             }
             catch (Exception ex)
@@ -96,8 +116,6 @@ namespace WebApplication2
                 Session.Add("error", ex);
                 throw;
             }
-
-
 
         }
 
