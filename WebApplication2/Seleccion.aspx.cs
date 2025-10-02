@@ -12,10 +12,9 @@ namespace WebApplication2
     public partial class Seleccion : System.Web.UI.Page
     {
         public List<Articulo> ListaArticulo { get; set; } = new List<Articulo>();
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            //ArticuloNegocio negocio = new ArticuloNegocio();
-            // ListaArticulo = negocio.listarConSP();
             if (!IsPostBack) 
             {
                 CargarArticulos();
@@ -26,7 +25,7 @@ namespace WebApplication2
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
 
-            var articulos = negocio.listarConSP();
+            var articulos = negocio.listarArt();
             var imagenes = negocio.listarImagen();
 
             foreach (var art in articulos)
@@ -36,16 +35,38 @@ namespace WebApplication2
                     .Select(img => img.ImagenUrl)
                     .ToList();
             }
-
-            ListaArticulo = articulos;
                         
+            rptArticulos.DataSource = articulos;
+            rptArticulos.DataBind();
+
         }
 
-       
-        protected void btnSeleccionar_Click(object sender, EventArgs e)
+        protected void rptArticulos_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-            Response.Redirect("DatosCliente.aspx?", false);
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                var rptImagenes = (Repeater)e.Item.FindControl("rptImagenes");
+                var art = (Articulo)e.Item.DataItem;
+                rptImagenes.DataSource = art.ImagenUrl;
+                rptImagenes.DataBind();
+            }
         }
-        
+
+        protected void btnSeleccionar_Command(object sender, CommandEventArgs e)
+        {
+            int idArticulo;
+            if (!int.TryParse(e.CommandArgument?.ToString(), out idArticulo))
+                return;
+
+            Session["IdArticuloSeleccionado"] = idArticulo;
+                     
+            Response.Redirect("DatosCliente.aspx", true);
+        }
+
+
+
     }
+        
+        
+    
 }

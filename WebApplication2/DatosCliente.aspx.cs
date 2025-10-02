@@ -27,6 +27,13 @@ namespace WebApplication2
                 ddlPartido.Items.Add("José C. Paz");
                 ddlPartido.Items.Add("San Miguel");
                 ddlPartido.Items.Add("General San Martín");
+                
+                    if (Session["IdArticuloSeleccionado"] != null)
+                    {
+                        int id = (int)Session["IdArticuloSeleccionado"];
+                        
+                    }
+
             }
 
         }

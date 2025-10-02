@@ -5,36 +5,34 @@
     <br />
                 
             <div class="container">
-            <div class="row">
-                <% foreach (Dominio.Articulo articulo in ListaArticulo) 
-                   { 
-                %>
-                    <div class="col-4 mb-4"> 
-                        <div class="card" style="border:1px solid #ccc; padding:10px;">
+    <div class="row">
+        <asp:Repeater ID="rptArticulos" runat="server">
+            <ItemTemplate>
+                <div class="col-4 mb-4">
+                    <div class="card" style="border:1px solid #ccc; padding:10px;">
                         <div style="display:flex; gap:5px; justify-content:center; flex-wrap:wrap;">
-                                <% foreach (var url in articulo.ImagenUrl)
-                                   { 
-                                %>
-                                    <img src="<%= url %>" alt="Imagen <%= articulo.Nombre %>" 
-                                         style="width:150px; height:150px; object-fit:cover; border:1px solid #aaa;">
-                                <% 
-                                   } 
-                                %>
-                            </div>
+                            <asp:Repeater ID="rptImagenes" runat="server" DataSource='<%# Eval("ImagenUrl") %>'>
+                                <ItemTemplate>
+                                    <img src='<%# Container.DataItem %>' 
+                                         style="width:150px; height:150px; object-fit:cover; border:1px solid #aaa;" />
+                                </ItemTemplate>
+                            </asp:Repeater>
+                        </div>
 
-                            <div style="margin-top:5px; text-align:center;">
-                                <h6><%= articulo.Nombre %></h6>
-                                <p style="font-size:0.8rem;"><%= articulo.Descripcion %></p>
-                                <asp:Button ID="Button1" CssClass="btn btn-sm btn-primary" runat="server" Text="Seleccionar" OnClick="btnSeleccionar_Click" />
-                            </div>
-
+                        <div style="margin-top:5px; text-align:center;">
+                            <h6><%# Eval("Nombre") %></h6>
+                            <p style="font-size:0.8rem;"><%# Eval("Descripcion") %></p>
+                            <asp:Button ID="btnSeleccionar" CssClass="btn btn-sm btn-primary" runat="server"
+                                        Text="Seleccionar"
+                                        CommandArgument='<%# Eval("Id") %>'
+                                        OnCommand="btnSeleccionar_Command" />
                         </div>
                     </div>
-                <% } %>
-            </div>
-        </div>
-
-
+                </div>
+            </ItemTemplate>
+        </asp:Repeater>
+    </div>
+</div>
          
     
    </asp:Content>

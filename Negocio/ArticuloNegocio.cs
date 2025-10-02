@@ -73,7 +73,7 @@ namespace Negocio
             }
         }
 
-        public List<Articulo> listarConSP()
+        public List<Articulo> listarArt()
         {
             List<Articulo> lista= new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
