@@ -105,6 +105,34 @@ namespace Negocio
             }
         }
 
+        public void modificar(Cliente modificar)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("update Clientes set Nombre=@Nombre, Apellido=@Apellido, Email=@Email , Direccion=@Direccion, Ciudad=@Partido, CP=@CodigoPostal where Documento=@Documento");
+                datos.setearParametro("@Nombre", modificar.Nombre);
+                datos.setearParametro("@Apellido", modificar.Apellido);
+                datos.setearParametro("@Email", modificar.Email);
+                datos.setearParametro("@Direccion", modificar.Direccion);
+                datos.setearParametro("@Partido", modificar.Partido);
+                datos.setearParametro("@CodigoPostal", modificar.CodigoPostal);
+                datos.setearParametro("@Documento", modificar.Documento);
+                datos.ejecutarAccion();
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
 
     }
 }
