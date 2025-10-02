@@ -96,6 +96,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CargaExitosa.aspx" />
     <Content Include="DatosCliente.aspx" />
     <Content Include="Promocion.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -183,6 +184,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="CargaExitosa.aspx.cs">
+      <DependentUpon>CargaExitosa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CargaExitosa.aspx.designer.cs">
+      <DependentUpon>CargaExitosa.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DatosCliente.aspx.cs">
       <DependentUpon>DatosCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

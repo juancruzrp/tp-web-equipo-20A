@@ -82,7 +82,7 @@ namespace WebApplication2
 
                 }
 
-                Response.Redirect("Promocion.aspx", false);
+                Response.Redirect("CargaExitosa.aspx", false);
             }
             catch (Exception ex)
             {
