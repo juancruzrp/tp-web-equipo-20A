@@ -68,6 +68,19 @@ namespace WebApplication2
 
                     negocio.agregar(cliente);
                 }
+                else
+                {
+                    // Modificar cliente existente
+                    cliente.Nombre = txtNombre.Text;
+                    cliente.Apellido = txtApellido.Text;
+                    cliente.Email = txtEmail.Text;
+                    cliente.Direccion = txtDireccion.Text;
+                    cliente.Partido = ddlPartido.SelectedValue.ToString();
+                    cliente.CodigoPostal = int.Parse(txtCodigoPostal.Text);
+
+                    negocio.modificar(cliente);
+
+                }
 
                 Response.Redirect("Promocion.aspx", false);
             }
@@ -78,7 +91,7 @@ namespace WebApplication2
             }
 
 
-           
+
         }
 
         protected void btnBuscarDNI_Click(object sender, EventArgs e)
@@ -124,6 +137,8 @@ namespace WebApplication2
                 lblMensaje.Visible = true;
             }
         }
+
+
 
     }
 }
