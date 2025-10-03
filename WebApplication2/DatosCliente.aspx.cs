@@ -42,11 +42,7 @@ namespace WebApplication2
         {
             args.IsValid = chkTerminos.Checked;
         }
-        protected void btnCancelar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Seleccion.aspx?", false);
-        }
-
+        
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
 
